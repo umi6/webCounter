@@ -24,12 +24,7 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./webCounter
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./webCounter/dist
-
-      - name: Deploy to gh-pages branch (avoid deprecated upload-artifact)
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./webCounter/dist
