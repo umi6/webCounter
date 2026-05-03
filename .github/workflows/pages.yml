@@ -27,6 +27,8 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./webCounter
+        env:
+          VITE_APP_BASE: './'
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
