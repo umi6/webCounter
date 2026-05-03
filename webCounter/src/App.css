@@ -1,0 +1,82 @@
+.controls{
+  position:fixed;
+  bottom:5px;
+  left:10px;
+  z-index:100;
+  padding:10px;
+  border-radius:30px;
+  color :white;
+  display :flex;
+  align-items :center;
+  gap:15px;
+
+}
+.controls button{
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  border:none;
+  background:transparent;
+  color :rgb(255, 255, 255);
+  font-size:30px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.score {
+  display: grid;
+  height: 100vh;
+  width:100vw;
+
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-rows: 1fr;
+
+  user-select: none;
+  touch-action: manipulation; /* スマホでのダブルタップズームを防止 */
+  transition: opacity 0.1s;
+}
+
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* パネルごとの色設定（例: .panel-0 { background: #... }） */
+  color:white;
+  transition: opacity 0.1s; /* タップ時のフィードバック用 */
+}
+.panel-0,
+.panel-1 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.panel-0 {
+  background-color: #ff3c00;
+  color: white;
+}
+.panel-1 {
+  background-color: #0084ff;
+  color: white;
+}
+.panel-2 {
+  background-color: #00ff62;
+  color: white;
+}
+.panel-3 {
+  background-color: #ffd000;
+  color: white;
+}
+.panel:active {
+  opacity: 0.8; /* 少し透明にする */
+}
+
+.layout-3,
+.layout-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
