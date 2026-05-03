@@ -29,9 +29,9 @@ jobs:
         with:
           path: ./webCounter/dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+      - name: Deploy to gh-pages branch (avoid deprecated upload-artifact)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./webCounter/dist
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
