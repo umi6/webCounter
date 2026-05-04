@@ -15,7 +15,7 @@
   color :white;
   display :flex;
   align-items :center;
-  gap:15px;
+  gap:1px;
 
 }
 .controls button{
@@ -55,6 +55,7 @@
 
 .panel {
   display: flex;
+    flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -86,7 +87,10 @@
   background-color: #ffd000;
   color: white;
 }
-
+.p{
+font-size :0.5em;
+margin-top:8px;
+}
 
 .layout-3,
 .layout-4 {
