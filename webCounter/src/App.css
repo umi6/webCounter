@@ -1,3 +1,10 @@
+.App {
+  touch-action:none;
+    height: 100%;
+  width:100%;
+  max-width: 100%;
+   user-select: none;
+}
 .controls{
   position:fixed;
   bottom:5px;
@@ -25,15 +32,24 @@
 
 .score {
   display: grid;
-  height: 100vh;
-  width:100vw;
+  position: fixed;
+  inset: 0;
+  touch-action: none;
+  height: 100%;
+  width: 100%;
 
+  box-sizing: border-box;
+  
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-auto-rows: 1fr;
+
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
 
   user-select: none;
   touch-action: manipulation; /* スマホでのダブルタップズームを防止 */
   transition: opacity 0.1s;
+  
 }
 
 
@@ -70,13 +86,26 @@
   background-color: #ffd000;
   color: white;
 }
-.panel:active {
-  opacity: 0.8; /* 少し透明にする */
-}
+
 
 .layout-3,
 .layout-4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+}
+.layout-9 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.App,
+.score,
+.panel,
+.panel h1,
+.controls,
+.controls button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
