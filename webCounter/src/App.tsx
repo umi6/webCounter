@@ -64,6 +64,11 @@ function App() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchIndex, setTouchIndex] = useState<number | null>(null);
 
+  const [showTimer, setShowTimer] = useState(false);
+  const [timerSeconds, setTimerSeconds] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [timerInput, setTimerInput] = useState("3");
+
   useEffect(() => {
     return () => {
       if (longPressTimer.current) {
@@ -72,6 +77,22 @@ function App() {
       }
     };
   }, []);
+
+  useEffect(() => {
+ if(!timerRunning || timerSeconds <= 0) return;
+
+ const interval = setInterval(()=>{
+  setTimerSeconds((prev) => {
+    if(prev <= 1){
+      setTimerRunning(false);
+      return 0;
+    }
+    return prev - 1;
+  });
+},1000);
+
+  return () => clearInterval(interval);
+  }, [timerRunning,timerSeconds]);
 
   const incrementScore = (index: number) => {
     setScores((prev) => {
@@ -130,7 +151,7 @@ function App() {
 
     if (diff > swipeThreshold) {
       setScores((prev) =>
-        prev.map((s, i) => (i === touchIndex ? Math.max(0, s - 1) : s))
+        prev.map((s, i) => (i === touchIndex ? Math.max(0, s - 1) : s)),
       );
     }
 
@@ -148,10 +169,7 @@ function App() {
     setTouchIndex(null);
   };
 
-  const CountTimer = ()=>{
-
-
-  }
+  const CountTimer = () => {};
   const updatePlayerCount = (newCount: number) => {
     if (newCount < playerMin || newCount > playerMax) return;
 
@@ -190,9 +208,18 @@ function App() {
         >
           -
         </button>
-        <button
-          onClick={()=> CountTimer()}>
-            
+        <button onClick={() => CountTimer()}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
         </button>
       </div>
 
